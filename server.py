@@ -1,6 +1,5 @@
 from flask import Flask,render_template
-from werkzeug.security import generate_password_hash, check_password_hash
-import gunicorn
+# from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
