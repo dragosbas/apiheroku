@@ -7,14 +7,11 @@ export const filterBulkData = (bulkData,sourceUrl) => {
     
     let currentMapping = (sourceUrl.includes('planet')) ? planetDetailsMapping : personDetailsMapping
     
-    console.log(sourceUrl,currentMapping)
-
     bulkData.forEach( element => {
         let elementDetails = {}
         currentMapping.forEach( key => elementDetails[key]=element[key])
         result.push(elementDetails)
     });
-    console.log(result)
     return result
 }
 

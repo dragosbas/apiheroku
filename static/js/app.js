@@ -25,16 +25,15 @@ await updatePage()
 
 
 function activateNavBar(){
-    document.querySelector('.navbar').addEventListener(`mouseover`, function (ev) {
-        ev.target.style.color = 'orange'
-        setTimeout(function () {ev.target.style.color = ''},500)
-    })
-    
     document.querySelector('.navbar').childNodes.forEach( element => {
         element.setAttribute('data-bs-toggle',"modal")
         element.setAttribute('data-bs-target',"#exampleModal") 
+        element.addEventListener(`mouseover`, function (ev) {
+            ev.target.style.color = 'orange'
+            ev.target.style.cursor = 'pointer'        
+            setTimeout(function () {ev.target.style.color = ''},500)
+        })
         element.onclick= function (ev) {
-                console.log(ev.target.id);
                 popupLogin()
                 }
             })
@@ -72,8 +71,8 @@ async function popupModal(urlList,planetName) {
 
     for (const url of splitUrlList) {
         const tempData = await getData(url)
-        .then( data => {return data})
-        .catch( err => {console.log("error fetching data : ",err.message)})
+                                .then( data => {return data})
+                                .catch( err => {console.log("error fetching data : ",err.message)})
         importedData.push(tempData)
     }
     
